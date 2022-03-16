@@ -2,6 +2,6 @@
 
 # Tarea 1 - Grupo 8
 
-Jorge Araneda
-Vicente Calisto
-Tristan Heuer
+- Jorge Araneda
+- Vicente Calisto
+- Tristan Heuer
