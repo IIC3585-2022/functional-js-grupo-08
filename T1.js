@@ -24,6 +24,7 @@ const TEXTS = {
 // Herramientas funcionales
 const pipe = (...functions) => data => functions.reduce((value, func) => func(value), data);
 const abuild = (n, func)=>[...new Array(n).keys()].map(func);
+const Y = f => (x => x(x))(x => f(y => x(x)(y))) 
 
 // Funciones
 const makePlayer = (name) => ({name, score: 501, roundScore: 0});
@@ -68,9 +69,7 @@ const initGame = (names) => {
     return names.map((name) => makePlayer(name));
 }
 
-const playGame = (players) => {
-	while (true) players = players.map(player => pipe(makeThrows, updateScore, checkWin)(player));
-};
+const playGameGen = playGame => (players => playGame(players.map(player => pipe(makeThrows, updateScore, checkWin)(player))));
 
 
-pipe(initGame, playGame)(['Jaime', 'Ema', 'Daniel']);
+pipe(initGame, Y(playGameGen))(['Jaime', 'Ema', 'Daniel']);
