@@ -69,7 +69,7 @@ const initGame = (names) => {
     return names.map((name) => makePlayer(name));
 }
 
-const playGameGen = playGame => (players => playGame(players.map(player => pipe(makeThrows, updateScore, checkWin)(player))));
+const playGameGen = f => (players => f(players.map(player => pipe(makeThrows, updateScore, checkWin)(player))));
 
 
 pipe(initGame, Y(playGameGen))(['Jaime', 'Ema', 'Daniel']);
