@@ -35,7 +35,7 @@ const multiplierThrow = () => {
 	return base * multiplier;
 };
 
-const makeThrow = i => (name) => {
+const makeThrow = (i, name) => {
 	    const choice = parseInt(readlineSync.question(TEXTS.askThrow(name, i)));
 	    if (choice === 1) return 50;
 	    if (choice === 2) return 25;
@@ -46,7 +46,7 @@ const makeThrow = i => (name) => {
 const makeThrows = ({name, score, roundScore}) => ({
     name,
     score,
-    roundScore: abuild(3, i => makeThrow(i+1)(name)).reduce((sum, score) => sum + score)
+    roundScore: abuild(3, i => makeThrow(i+1, name)).reduce((sum, score) => sum + score)
 });
 
 const updateScore = ({name, score, roundScore}) => ({
